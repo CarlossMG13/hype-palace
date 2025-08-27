@@ -12,11 +12,19 @@
     <!-- Tailwind here -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Fonts Here -->
+
+    <!-- Global styles -->
+    <style>
+      body {
+        background-color: #f0f0f0;
+        color: #333;
+      }
+    </style>
   </head>
   <body>
     <!-- Header Mobile -->
-    <header class="flex px-3 border-b-1 border-[#333] text-sm text-[#333] items-center justify-between | lg:hidden">
-      <div class="mobile-menu">
+    <header class="flex px-3 border-b-1 border-[#D5D5D5] text-sm text-[#333] items-center justify-between | lg:hidden">
+      <div class="mobile-menu flex flex-grow basis-0">
         <button id="open-menu-btn" class="p-2">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -24,9 +32,10 @@
         </button>
       </div>
       <div class="logo py-5">
-        <a class="flex items-center gap-1" href="{% url 'index' %}"><span class="font-semibold text-lg">CULT.ure</span></a>
+        <a class="flex items-center gap-1" href="{% url 'index' %}"><span class="font-semibold text-xl">CULT.ure</span></a>
       </div>
-      <div class="cart-icon">
+      <div class="cart-icon flex gap-2 flex-grow basis-0 justify-end">
+        <a href="#">User</a>
         <button id="open-cart-btn">Carrito</button>
       </div>
     </header>
@@ -59,7 +68,41 @@
     <div id="overlay" class="fixed top-0 left-0 w-full h-full bg-black/50 z-50 hidden"></div>
 
     <!-- Header desktop -->
-    <header class="hidden px-20 my-5 text-sm text-[#333] flex items-center justify-between | lg:flex | xl:text-base"></header>
+    <header class="hidden | lg:flex lg:flex-col">
+      <div class="top-header w-full flex items-center border-b-1 border-[#D5D5D5] px-10">
+        <div class="logo py-5 flex flex-grow basis-0">
+          <a class="flex items-center" href="{% url 'index' %}"><span class="font-semibold text-2xl">CULT.ure</span></a>
+        </div>
+        <nav class="flex flex-grow basis-0 justify-end">
+          <ul class="flex [&>li>a]:px-3 [&>li>a]:py-2">
+            <li>
+              <a href="#">Log in</a>
+            </li>
+            <li>
+              <a href="#">Sign up</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="low-header w-full flex justify-center py-2 bg-[#D9D9D9] font-semibold text-lg">
+        <nav>
+          <ul class="flex gap-1 [&>li>a]:px-3 [&>li>a]:py-3">
+            <li>
+              <a href="#">Sneakers</a>
+            </li>
+            <li>
+              <a href="#">Apparel</a>
+            </li>
+            <li>
+              <a href="#">Coleccionables</a>
+            </li>
+            <li>
+              <a href="#">Accesorios</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
     <main>
       {% block content %}
