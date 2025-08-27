@@ -11,9 +11,55 @@
     </title>
     <!-- Tailwind here -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Fonts Here -->
   </head>
   <body>
-    <header>5</header>
+    <!-- Header Mobile -->
+    <header class="flex px-3 border-b-1 border-[#333] text-sm text-[#333] items-center justify-between | lg:hidden">
+      <div class="mobile-menu">
+        <button id="open-menu-btn" class="p-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="logo py-5">
+        <a class="flex items-center gap-1" href="{% url 'index' %}"><span class="font-semibold text-lg">CULT.ure</span></a>
+      </div>
+      <div class="cart-icon">
+        <button id="open-cart-btn">Carrito</button>
+      </div>
+    </header>
+
+    <!-- Slide mobile menu -->
+    <div id="mobile-menu-slide" class="fixed top-0 left-0 w-7/8 h-full bg-white z-80 transform -translate-x-full transition-transform duration-300 ease-in-out md:w-3/4">
+      <div class="flex justify-end p-4">
+        <button id="close-menu-btn" class="p-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <nav class="p-4"></nav>
+    </div>
+
+    <!-- Slide mobile cart -->
+    <div id="mobile-cart-slide" class="fixed top-0 left-0 w-full h-3/4 bg-[#1F1F1F] z-80 transform -translate-y-full transition-transform duration-300 ease-in-out overflow-y-auto">
+      <div class="flex justify-end p-4">
+        <button id="close-cart-btn" class="p-2">
+          <svg class="w-6 h-6" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="p-4 text-white"></div>
+    </div>
+
+    <!-- Overlay mobile menu -->
+    <div id="overlay" class="fixed top-0 left-0 w-full h-full bg-black/50 z-50 hidden"></div>
+
+    <!-- Header desktop -->
+    <header class="hidden px-20 my-5 text-sm text-[#333] flex items-center justify-between | lg:flex | xl:text-base"></header>
 
     <main>
       {% block content %}
@@ -26,5 +72,7 @@
     {% if DEBUG %}
       {% include 'django_browser_reload/includes/js.html' %}
     {% endif %}
+
+    <script src="{% static 'js/store/base.js' %}"></script>
   </body>
 </html>
