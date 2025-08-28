@@ -11,8 +11,11 @@
     </title>
     <!-- Tailwind here -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Fonts Here -->
 
+    <!-- Box icons here -->
+    <link href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css" rel="stylesheet" />
+    <link href="https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css" rel="stylesheet" />
+    <link href="https://cdn.boxicons.com/fonts/transformations.min.css" rel="stylesheet" />
     <!-- Global styles -->
     <style>
       body {
@@ -23,28 +26,28 @@
   </head>
   <body>
     <!-- Header Mobile -->
-    <header class="flex px-3 border-b-1 border-[#D5D5D5] text-sm text-[#333] items-center justify-between | lg:hidden">
+    <header class="flex px-3 bg-[#272523] border-b-1 border-[#D5D5D5] text-sm text-[#333] items-center justify-between | lg:hidden">
       <div class="mobile-menu flex flex-grow basis-0">
         <button id="open-menu-btn" class="p-2">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="w-6 h-6" fill="none" stroke="#dfd4d3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
       </div>
-      <div class="logo py-5">
-        <a class="flex items-center gap-1" href="{% url 'index' %}"><span class="font-semibold text-xl">CULT.ure</span></a>
+      <div class="logo">
+        <a class="flex items-center gap-1" href="{% url 'index' %}"><img class="w-35" src="{% static 'assets\logo\logo.svg' %}" alt="Logo" /></a>
       </div>
-      <div class="cart-icon flex gap-2 flex-grow basis-0 justify-end">
-        <a href="#">User</a>
-        <button id="open-cart-btn">Carrito</button>
+      <div class="cart-icon flex gap-5 text-white flex-grow basis-0 justify-end">
+        <a class="text-[#dfd4d3]" href="#"><i class="bx bx-user bx-sm"></i></a>
+        <button class="open-cart-btn text-[#dfd4d3]"><i class="bx bx-cart bx-sm"></i></button>
       </div>
     </header>
 
     <!-- Slide mobile menu -->
-    <div id="mobile-menu-slide" class="fixed top-0 left-0 w-7/8 h-full bg-white z-80 transform -translate-x-full transition-transform duration-300 ease-in-out md:w-3/4">
+    <div id="mobile-menu-slide" class="fixed bg-[#dfd4d3] top-0 left-0 w-7/8 h-full z-80 transform -translate-x-full transition-transform duration-300 ease-in-out md:w-3/4">
       <div class="flex justify-end p-4">
         <button id="close-menu-btn" class="p-2">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="w-6 h-6" fill="none" stroke="#12110e" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
@@ -52,11 +55,11 @@
       <nav class="p-4"></nav>
     </div>
 
-    <!-- Slide mobile cart -->
-    <div id="mobile-cart-slide" class="fixed top-0 left-0 w-full h-3/4 bg-[#1F1F1F] z-80 transform -translate-y-full transition-transform duration-300 ease-in-out overflow-y-auto">
+    <!-- Slide cart -->
+    <div id="cart-slide" class="fixed top-0 left-0 w-full h-3/4 bg-[#1F1F1F] z-80 transform -translate-y-full transition-transform duration-300 ease-in-out overflow-y-auto">
       <div class="flex justify-end p-4">
         <button id="close-cart-btn" class="p-2">
-          <svg class="w-6 h-6" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="w-6 h-6" fill="none" stroke="#dfd4d3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
@@ -69,24 +72,18 @@
 
     <!-- Header desktop -->
     <header class="hidden | lg:flex lg:flex-col">
-      <div class="top-header w-full flex items-center border-b-1 border-[#D5D5D5] px-10">
-        <div class="logo py-5 flex flex-grow basis-0">
-          <a class="flex items-center" href="{% url 'index' %}"><span class="font-semibold text-2xl">CULT.ure</span></a>
+      <div class="top-header bg-[#272523] w-full flex items-center border-b-1 border-[#D5D5D5] px-10">
+        <div class="logo flex flex-grow basis-0">
+          <a class="flex items-center" href="{% url 'index' %}"><img class="w-32" src="{% static 'assets\logo\logo.svg' %}" alt="" /></a>
         </div>
-        <nav class="flex flex-grow basis-0 justify-end">
-          <ul class="flex [&>li>a]:px-3 [&>li>a]:py-2">
-            <li>
-              <a href="#">Log in</a>
-            </li>
-            <li>
-              <a href="#">Sign up</a>
-            </li>
-          </ul>
-        </nav>
+        <div>
+          <a class="text-[#dfd4d3]" href="#"><i class="bx bx-user bx-sm"></i></a>
+          <button class="open-cart-btn text-[#dfd4d3]"><i class="bx bx-cart bx-sm"></i></button>
+        </div>
       </div>
-      <div class="low-header w-full flex justify-center py-2 bg-[#D9D9D9] font-semibold text-lg">
+      <div class="low-header w-full flex justify-center py-2 bg-[#dfd4d3] font-semibold text-lg">
         <nav>
-          <ul class="flex gap-1 [&>li>a]:px-3 [&>li>a]:py-3">
+          <ul class="flex gap-1 [&>li>a]:px-3 [&>li>a]:py-3 text-[#12110e]">
             <li>
               <a href="#">Sneakers</a>
             </li>
@@ -110,7 +107,56 @@
       {% endblock %}
     </main>
 
-    <footer></footer>
+    <footer class="bg-[#12110e] | xl:flex xl:flex-col xl:justify-center xl:items-center">
+      <div class="grid grid-cols-1 gap-10 px-10 py-5 [&>div>h3]:text-white [&>div>h3]:text-xl [&>div>a]:text-sm | sm:grid-cols-2 | md:grid-cols-4 | xl:gap-30">
+        <div class="flex flex-col space-y-5 text-[#dfd4d3]">
+          <h3>MENU</h3>
+          <a href="#">Sneakers</a>
+          <a href="#">Apparel</a>
+          <a href="#">Coleccionables</a>
+          <a href="#">Accesorios</a>
+          <a href="#">CULT.ure</a>
+        </div>
+
+        <div class="flex flex-col space-y-5 text-[#dfd4d3]">
+          <h3>CULT.ure</h3>
+          <a href="#">About</a>
+          <a href="#">Vender</a>
+          <a href="#">Contacto</a>
+        </div>
+
+        <div class="flex flex-col space-y-5 text-[#dfd4d3]">
+          <h3>MENU</h3>
+          <a href="#">Sneakers</a>
+          <a href="#">Apparel</a>
+          <a href="#">Coleccionables</a>
+          <a href="#">Accesorios</a>
+          <a href="#">CULT.ure</a>
+        </div>
+
+        <div class="flex flex-col space-y-5 text-[#dfd4d3]">
+          <h3>MENU</h3>
+          <a href="#">Sneakers</a>
+          <a href="#">Apparel</a>
+          <a href="#">Coleccionables</a>
+          <a href="#">Accesorios</a>
+          <a href="#">CULT.ure</a>
+        </div>
+      </div>
+
+      <div class="social-media text-center space-y-5 py-10 px-15">
+        <h3 class="text-white">Siguenos sneakerhead!</h3>
+        <div class="text-white">
+          <a href="#"><i class="bxl bx-instagram bx-sm"></i></a>
+          <a href="#"><i class="bxl bx-tiktok bx-sm"></i></a>
+          <a href="#"><i class="bxl bx-youtube bx-sm"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="register-brand border-t-1 border-[#dfd4d3] bg-[#12110e] py-10 text-center text-[#dfd4d3]">
+      <a href="{% url 'index' %}">CULT.ure 2025</a>
+    </div>
 
     {% if DEBUG %}
       {% include 'django_browser_reload/includes/js.html' %}

@@ -4,11 +4,6 @@ const closeMenuBtn = document.getElementById("close-menu-btn");
 const mobileMenuSlide = document.getElementById("mobile-menu-slide");
 const overlay = document.getElementById("overlay");
 
-/* Mobile cart */
-const openCartBtn = document.getElementById("open-cart-btn");
-const closeCartBtn = document.getElementById("close-cart-btn");
-const mobileCartSlide = document.getElementById("mobile-cart-slide");
-
 openMenuBtn.addEventListener("click", () => {
   mobileMenuSlide.classList.remove("-translate-x-full");
   overlay.classList.remove("hidden");
@@ -19,12 +14,19 @@ closeMenuBtn.addEventListener("click", () => {
   overlay.classList.add("hidden");
 });
 
-openCartBtn.addEventListener("click", () => {
-  mobileCartSlide.classList.remove("-translate-y-full");
-  overlay.classList.remove("hidden");
+// Corrección: Añadir el punto para seleccionar la clase
+const openCartBtns = document.querySelectorAll(".open-cart-btn");
+const closeCartBtn = document.getElementById("close-cart-btn");
+const cartSlide = document.getElementById("cart-slide");
+
+openCartBtns.forEach((button) => {
+  button.addEventListener("click", () => {
+    cartSlide.classList.remove("-translate-y-full");
+    overlay.classList.remove("hidden");
+  });
 });
 
 closeCartBtn.addEventListener("click", () => {
-  mobileCartSlide.classList.add("-translate-y-full");
+  cartSlide.classList.add("-translate-y-full");
   overlay.classList.add("hidden");
 });
